@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
     <script src="./js/form.js"></script>
     <title>Document</title>
 </head>
@@ -67,8 +69,8 @@
                         <select class="symptom-list" id="truonglucco" onchange=getID() name="TruongLucCo">
                             <option value="">Trống</option>
                             <option value="BT">Bình thường</option>
-                            <option value="Giam">Giảm</option>
-                            <option value="Tang">Tăng</option>
+                            <option value="giam">Giảm</option>
+                            <option value="tang">Tăng</option>
                         </select>
                     </div>
 
@@ -122,18 +124,18 @@
 
                     <div class="form-row symptom-option">
                         <h4>Cảm giác</h4>
-                        <div class="form-group">
+                        <div class="form-group" id="roiloancg">
                             <label for="">Rối loạn cảm giác</label>
-                            <select class="symptom-list" id="roiloan" onchange=getID() name="RoiLoanCamGiac">
+                            <select class="symptom-list" id="roiloancg-dropdown" onchange=getID() name="RoiLoanCamGiac">
                                 <option value="">Trống</option>
                                 <option value="0">-</option>
                                 <option value="1">+</option>
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" id="camgiacnong">
                             <label for="">Cảm giác nông</label>
-                            <select class="symptom-list" id="camgiacnong" onchange=getID() name="CamGiacNong">
+                            <select class="symptom-list" onchange=getID() name="CamGiacNong">
                                 <option value="">Trống</option>
                                 <option value="MD1">Bình thường</option>
                                 <option value="MD2">Giảm hoặc mất</option>
@@ -142,9 +144,9 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" id="camgiacsau">
                             <label for="">Cảm giác sâu</label>
-                            <select class="symptom-list" id="camgiacsau" onchange=getID() name="CamGiacSau">
+                            <select class="symptom-list" onchange=getID() name="CamGiacSau">
                                 <option value="">Trống</option>
                                 <option value="MD1">Bình thường</option>
                                 <option value="MD2">Giảm hoặc mất</option>
@@ -153,9 +155,9 @@
                         </div>
 
 
-                        <div class="form-group">
+                        <div class="form-group" id="camgiacBT">
                             <label for="" style="margin-top: 10px">Vị trí bất thường</label>
-                            <select class="symptom-list" id="vitribathuong2" onchange=getID() name="ViTriBatThuongCG">
+                            <select class="symptom-list" onchange=getID() name="ViTriBatThuongCG">
                                 <option value="">Trống</option>
                                 <option value="BT01">Gối</option>
                                 <option value="BT02">Gót</option>
@@ -168,9 +170,9 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" id="camgiacdau">
                             <label for="">Cảm giác đau</label>
-                            <select class="symptom-list" id="camgiacdau" onchange=getID() name="CamGiacDau">
+                            <select class="symptom-list" onchange=getID() name="CamGiacDau">
                                 <option value="">Trống</option>
                                 <option value="MD0">Bình thường</option>
                                 <option value="MD2">Tăng cảm giác đau</option>
