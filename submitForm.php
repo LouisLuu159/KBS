@@ -1,14 +1,13 @@
 <?php 
 
    $TrongSo = array('GanXuong' => 5, 'CoLuc' => 6, 'TruongLucCo' => 6, 'PhanXaThap' => 4, 'TeoCo' => 3, 
-                     'TuDongTuy' => 3, 'RoiLoanCT' => 4, 'CamGiac' => 4, 'Mat' => 3, 'DauDau' => 5, 'Sot' => 3);
+                     'TuDongTuy' => 3, 'RoiLoanCT' => 4, 'CamGiac' => 4, 'Mat' => 3, 'DauDau' => 3, 'Sot' => 3);
    $TongTrongSo = 0;
    foreach($TrongSo as $key => $val) {
      $TongTrongSo += $val;
       // echo "Trong so - $key : $val<br>";
     }
 
-    echo "Tong Trong So: $TongTrongSo" . "<br>";
   if(isset($_POST)){
     $GanXuong = $_POST['GanXuong'];
     $GanXuongBT = $_POST['ViTriBatThuongGX'];
@@ -27,10 +26,12 @@
     $Daudau = $_POST['DauDau'];
     $Sot = $_POST['Sot'];
     $Mat = $_POST['Mat'];
-
+    
+    echo "Form data: ";
     foreach($_POST as $key => $val) {
       echo "$key : $val<br>";
     }
+    echo "<br> Tong Trong So: $TongTrongSo" . "<br>";
 
     include("connection.php"); 
     $stmt = $conn->prepare("select `case`.*, `camgiac`.`RoiLoan` AS RoiLoanCG, `camgiac`.`CamGiacNong`, `camgiac`.`CamGiacSau`, `camgiac`.ViTri AS CamGiacBT, `camgiac`.`CamGiacDau` 
@@ -88,11 +89,15 @@
       echo $d_RoiLoanCT . "*" . $TrongSo['RoiLoanCT'] . " + ";
        
       $d_CamGiac = 1;
-      if($RoiLoanCG != $row['RoiLoanCG']) $d_CamGiac -= 0.2;
-      if($CamGiacNong != $row['CamGiacNong']) $d_CamGiac -= 0.2;
-      if($CamGiacSau != $row['CamGiacSau']) $d_CamGiac -= 0.2;
-      if($CamGiacBT != $row['CamGiacBT']) $d_CamGiac -= 0.2;
-      if($CamGiacDau != $row['CamGiacDau']) $d_CamGiac -= 0.2;
+      if($RoiLoanCG != $row['RoiLoanCG']){
+        $d_CamGiac = 0;
+      } 
+      else{
+        if($CamGiacNong != $row['CamGiacNong']) $d_CamGiac -= 0.2;
+        if($CamGiacSau != $row['CamGiacSau']) $d_CamGiac -= 0.2;
+        if($CamGiacBT != $row['CamGiacBT']) $d_CamGiac -= 0.2;
+        if($CamGiacDau != $row['CamGiacDau']) $d_CamGiac -= 0.2;
+      }
       $SimilarityVal += round($d_CamGiac,2) * $TrongSo['CamGiac'] / $TongTrongSo; 
       echo round($d_CamGiac,2) . "*" . $TrongSo['CamGiac'] . " + ";
 

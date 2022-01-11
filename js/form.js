@@ -37,11 +37,15 @@ $(function () {
     rules: {
       GanXuong: "required",
       CoLuc: "required",
+      TruongLucCo: "required",
+      RoiLoanCamGiac: "required",
     },
     // Specify validation error messages
     messages: {
       GanXuong: "Bạn chưa chọn Phản xạ gân xương",
       CoLuc: "Bạn chưa chọn Cơ Lực",
+      TruongLucCo: "Bạn chưa chọn trường lực cơ",
+      RoiLoanCamGiac: "Bạn chưa chọn Cảm giác",
     },
 
     errorPlacement: function (error, element) {
@@ -69,6 +73,11 @@ $(document).ready(function () {
       $("#camgiacsau").show();
       $("#camgiacBT").show();
       $("#camgiacdau").show();
+    } else {
+      $("#camgiacnong").hide();
+      $("#camgiacsau").hide();
+      $("#camgiacBT").hide();
+      $("#camgiacdau").hide();
     }
   });
 });
